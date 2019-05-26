@@ -1,0 +1,449 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Canvas</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/moon.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<script src="plugin/markdown/marked.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- 1 -->
+				<section data-markdown>
+					<textarea data-template>
+						# Canvas
+
+						<aside class="notes">
+							Intro to Canvas
+						</aside>
+					</textarea>
+				</section>
+
+				<!-- 2 -->
+				<section data-markdown>
+					<textarea data-template>
+						## What is HTML Canvas?
+
+						The HTML  \<canvas> element is used to draw graphics on a web page.
+						It is possible to  draw graphics, on the fly, via scripting (usually JavaScript).
+
+						<aside class="notes">
+							The canvas element is only a container for graphics. You must use a script to actually draw the graphics.
+							Canvas has several methods for drawing paths, boxes, circles, text, and adding images.
+							<hr>
+							First introduced in WebKit by Apple for the OS X Dashboard.
+							Today, all major browsers support it.
+						</aside>
+
+					</textarea>
+				</section>
+
+				<!-- 3 -->
+				<section data-markdown>
+					<textarea data-template>
+						## Canvas Example
+						A canvas is a rectangular area on an HTML page. By default, a canvas has no border and no content.
+						The markup looks like this:
+						<pre><code><canvas id="c" width="20" height="10"
+							style="border:1px solid #000;">
+						</canvas></code></pre>
+						
+						<aside class="notes">
+							Always specify an id attribute, a width
+							and height attribute to define the size of the canvas. By default, the element has no border and no content.
+							To add a border, use the style attribute.
+							<hr>
+							The canvas element can be styled just like any normal image (margin, border, background…).
+							These rules don't affect the actual drawing on the canvas. When no styling rules are applied to the canvas
+							it will initially be fully transparent.
+							<hr>
+							You can have multiple canvas elements on one HTML page.
+						</aside>
+
+					</textarea>
+				</section>
+
+				<!-- 4 -->
+				<section data-markdown>
+					<textarea data-template>
+						## Fallback content
+						<pre><code>
+							<canvas id="stockGraph" width="150" height="150">
+								current stock price: $3.15 + 0.15
+							</canvas>
+							  
+							<canvas id="clock" width="150" height="150">
+							<img src="images/clock.png" width="150" height="150" alt=""/>
+							</canvas>
+							</code></pre>
+	
+						<aside class="notes">
+							It is easy to define some fallback content, to be displayed
+							in older browsers not supporting canvas. You should always provide fallback content
+							to be displayed by those browsers.
+							<hr>
+							To provide fallback content just insert the alternate 
+							content inside the canvas element. Browsers that don't support canvas will 
+							ignore the container and render the fallback content inside it. Browsers that 
+							do support canvas will ignore the content inside the container, and just 
+							render the canvas normally.
+							<hr>		
+							For example, provide a text description of the canvas content or 
+							a static image of the dynamically rendered content.
+						</aside>
+	
+					</textarea>
+				</section>
+				
+				<!-- 5 -->
+				<section data-markdown>
+					<textarea data-template>
+						## HTML Canvas Can
+						<canvas width="300" height="225" style="border:1px solid #eee;"></canvas>
+
+						<aside class="notes">
+							A canvas is a rectangle in your page where you can use JavaScript to draw anything you want.
+							Every canvas starts out blank. That’s boring! Let’s draw something.
+						</aside>
+
+					</textarea>
+				</section>
+				
+				<!-- 6 -->
+				<section data-markdown>
+					<textarea data-template>
+						### Draw Text
+						Canvas can draw colorful text, with or without animation.
+
+						<aside class="notes">
+							To draw text on a canvas, the most important properties and methods are on the next slide.
+						</aside>
+
+					</textarea>
+				</section>
+
+				<!-- 7 -->
+				<section data-markdown>
+					<textarea data-template>
+						###### Properties
+						* font - Sets or returns the current font properties for text content
+						* textAlign	- Sets or returns the current alignment for text content
+						* textBaseline - Sets or returns the current text baseline used when drawing text
+						---
+						###### Methods
+						* fillText() - Draws "filled" text on the canvas
+						* strokeText() - Draws text on the canvas (no fill)
+						* measureText()	- Returns an object that contains the width of the specified text
+
+						<aside class="notes">
+							Two methods to render text.
+							Styling text. No box model.
+							fillStyle, Direction and measureText method.
+						</aside>
+
+					</textarea>
+				</section>
+
+				<!-- 8 -->
+				<section data-markdown>
+					<textarea data-template>
+						### Canvas Drawing
+						All drawing on the HTML canvas must be done with JavaScript.
+
+						<aside class="notes">
+							Canvas only supports one primitive shape: rectangles.
+						</aside>
+
+					</textarea>
+				</section>
+
+				<!-- 9 -->
+				<section data-markdown>
+					<textarea data-template>
+						### Steps
+
+						1. Find the Canvas Element using DOM.
+						2. Create a Drawing Object.
+						3. Draw on the Canvas.
+
+						<pre><code><script>
+							var canvas = document.getElementById("myCanvas");
+							var ctx = canvas.getContext("2d");
+							ctx.fillStyle = "#FF0000";
+							ctx.fillRect(0, 0, 150, 75);
+						</script>
+						</code></pre>
+
+						<aside class="notes">
+							The getContext() is a built-in HTML object, with properties and methods for drawing.
+							The fillStyle property can be a CSS color, a gradient, or a pattern. The default fillStyle is black.
+							strokeRect(x, y, width, height) - draws a rectangular outline.
+							clearRect - makes transparent area.
+						</aside>
+
+					</textarea>
+				</section>
+
+				<!-- 10 -->
+				<section data-markdown>
+					<textarea data-template>
+						### Canvas Coordinates
+						The HTML canvas is a two-dimensional grid.
+						The upper-left corner of the canvas has the coordinates (0,0)
+
+						<aside class="notes">
+							fillRect(0,0,150,75) means: Start at the upper-left corner (0,0) and draw a 150x75 pixels rectangle.	
+							<hr>
+							Along the X-axis, values increase towards the right edge of the canvas. 
+							Along the Y-axis, values increase towards the bottom edge of the canvas.
+						</aside>
+
+					</textarea>
+				</section>
+
+				<!-- 11 -->
+				<section data-markdown>
+					<textarea data-template>
+						### Draw a Line
+						<pre><code><script>
+							var canvas = document.getElementById("myCanvas");
+							var ctx = canvas.getContext("2d");
+							ctx.moveTo(0, 0);
+							ctx.lineTo(200, 100);
+							ctx.stroke();
+						</script>
+						</code></pre>
+
+						<aside class="notes">
+							Path - pencil.
+							Define a starting point in position (0,0), and an ending point in position (200,100), stroke() method draw the line.
+							moveTo(x, y) moves the pencil to the specified starting point.
+							lineTo(x, y) draws a line to the specified ending point.
+						</aside>
+
+					</textarea>
+				</section>
+
+				<!-- 12 -->
+				<section data-markdown>
+					<textarea data-template>
+						### Drawing paths
+						The only other primitive shapes are paths - a list of points, connected by segments of lines that 
+						can be of different shapes, curved or not, of different width and of different color. A path can be closed.
+						To make shapes using paths:
+
+						1. Create the path.
+						2. Use drawing commands to draw into the path.
+						3. Stroke or fill the path to render it.
+
+						<aside class="notes">
+							beginPath() - Creates a new path. 
+							closePath()- Adds a straight line to the path, going to the start of the current sub-path.
+							stroke() - Draws the shape by stroking its outline.
+							fill()- Draws a solid shape by filling the path's content area.
+
+						</aside>
+
+					</textarea>
+				</section>
+
+				<!-- 13 -->
+				<section data-markdown>
+					<textarea data-template>
+						### Draw a Circle
+						<pre><code><script>
+							var canvas = document.getElementById("myCanvas");
+							var ctx = canvas.getContext("2d");
+							ctx.beginPath();
+							ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+							ctx.stroke();
+						</script>
+						</code></pre>
+
+						<aside class="notes">
+							beginPath() - begins a path.
+							arc(x,y,r,startangle,endangle) - creates an arc/curve. The x and y parameters -
+							the x- and y-coordinates of the center of the circle. The r parameter defines the radius of the circle.
+						</aside>
+
+					</textarea>
+				</section>
+
+				<!-- 14 -->
+				<section data-markdown>
+					<textarea data-template>
+						### Canvas Gradients
+						Gradients can be used to fill rectangles, circles, lines, text, etc. Shapes on the canvas are not limited to solid colors.
+
+						###### Types of gradients:
+
+						* createLinearGradient(x,y,x1,y1) - creates a linear gradient
+						* createRadialGradient(x,y,r,x1,y1,r1) - creates a radial/circular gradient
+
+						<aside class="notes">
+							Must add two or more color stops.
+							The addColorStop() method specifies the color stops, and its position along the gradient. Gradient positions can be anywhere between 0 to 1.
+							To use the gradient, set the fillStyle or strokeStyle property to the gradient, then draw the shape (rectangle, text, or a line).
+						</aside>
+
+					</textarea>
+				</section>
+
+				<!-- 15 -->
+				<section data-markdown>
+					<textarea data-template>
+						### Linear Gradient
+
+						<pre><code><script>
+							var c = document.getElementById("myCanvas");
+							var ctx = c.getContext("2d");
+
+							// Create gradient
+							var grd = ctx.createLinearGradient(0, 0, 200, 0);
+							grd.addColorStop(0, "red");
+							grd.addColorStop(1, "white");
+
+							// Fill with gradient
+							ctx.fillStyle = grd;
+							ctx.fillRect(10, 10, 150, 80);
+						</script>
+						</code></pre>
+
+						<aside class="notes">
+							An example of linear gradient.
+						</aside>
+
+					</textarea>
+				</section>
+
+				<!-- 16 -->
+				<section data-markdown>
+					<textarea data-template>
+						### Images
+						To draw an image on a canvas, use the method drawImage(image,x,y)
+
+						<pre><code><script>
+							window.onload = function() {
+							var canvas = document.getElementById("myCanvas");
+							var ctx = canvas.getContext("2d");
+							var img = document.getElementById("scream");
+							ctx.drawImage(img, 10, 10);
+							};
+						</script>
+						</code></pre>
+
+						<aside class="notes">
+							The image can be an existing img element, or you can create an Image() object with JavaScript. Need to ensure that the image is fully 
+							loaded before you can draw.
+							If you’re using an existing img element, you can safely draw it on the canvas during the window.onload event.
+						</aside>
+
+					</textarea>
+				</section>
+
+				<!-- 17 -->
+				<section data-markdown>
+					<textarea data-template>
+						### Can be Animated
+						Canvas objects can move. Everything is possible: from simple bouncing balls to complex animations.
+
+						###### Basic animation steps
+
+						1. Clear the canvas
+						2. Save the canvas state.
+						3. Draw animated shapes - the actual frame rendering.
+						4. Restore the canvas state - restore the state before drawing a new frame.
+
+						<aside class="notes">
+							In the examples below, we'll use the window.requestAnimationFrame() method 
+							to control the animation. The requestAnimationFrame method provides a smoother 
+							and more efficient way for animating by calling the animation frame when the 
+							system is ready to paint the frame.
+						</aside>
+
+					</textarea>
+				</section>
+
+				<!-- 18 -->
+				<section data-markdown>
+					<textarea data-template>
+						### Method for animation
+						requestAnimationFrame(callback) - tells the browser to perform an animation.
+
+						<pre><code><script>
+							function init() {
+								window.requestAnimationFrame(draw);
+							}
+							function draw() {
+								var ctx = document.getElementById('canvas').getContext('2d');
+							
+								ctx.globalCompositeOperation = 'destination-over';
+								ctx.clearRect(0, 0, 300, 300); // clear canvas
+								// Draw animated shapes code
+								window.requestAnimationFrame(draw);
+							}
+							init();
+						</script>
+						</code></pre>
+
+						<aside class="notes">
+							It's necessary to clear any shapes that have been drawn previously. The easiest way to do this is the clearRect() method.
+							Then make sure the original state is saved if you change the style or make some transformations.
+						</aside>
+
+					</textarea>
+				</section>
+
+				<!-- 19 -->
+				<section data-markdown>
+					<textarea data-template>
+						### Thank you for your attention
+						If you have any questions feel free to ask.
+
+						<aside class="notes">
+							
+						</aside>
+
+					</textarea>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
