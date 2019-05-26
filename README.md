@@ -1,4 +1,4 @@
-Slide (Canvas)
+**Slide (Canvas)**
 Hello to everybody who is watching this video! Today I'll tell you about canvas.
 So let's start!
 
